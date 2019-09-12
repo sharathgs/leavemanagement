@@ -19,7 +19,9 @@ public class Leaves {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int leavesId;
 	private int employeeId;
-	private int rh;
-	private int ch;
+	private int restrictedHoliday;
+	private int companyHoliday;
+	private int availedRestrictedHoliday;
+	private int availedCompanyHoliday;
 	
 }
