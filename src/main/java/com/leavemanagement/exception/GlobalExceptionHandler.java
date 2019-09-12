@@ -17,8 +17,19 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 		  ErrorResponse errorResponse = new ErrorResponse(LocalDate.now(),
 		  exception.getMessage(), request.getDescription(false));
 		  
-		  return new ResponseEntity<ErrorResponse>(errorResponse,HttpStatus.NOT_FOUND);
+		  return new ResponseEntity<>(errorResponse,HttpStatus.NOT_FOUND);
 		  
 		  }
+	
+	
+	@ExceptionHandler(LeaveException.class)
+	public ResponseEntity<ErrorResponse> globalExceptionHandler(LeaveException exception,
+			WebRequest request) {
+		ErrorResponse errorResponse = new ErrorResponse();
+		errorResponse.setMessage(exception.getMessage());
+		errorResponse.setStatusCode(HttpStatus.NOT_FOUND.value());
+		errorResponse.setTimestamp(LocalDate.now());
+		return new ResponseEntity<>(errorResponse, HttpStatus.NOT_FOUND);
+	}
 	
 }
